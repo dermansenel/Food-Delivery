@@ -5,10 +5,11 @@ import { Routes, Route } from "react-router-dom";
 import Add from "./pages/Add/Add"; // Örnek dosya yolu
 import List from "./pages/List/List"; // Örnek dosya yolu
 import Orders from "./pages/Orders/Orders"; // Örnek dosya yolu
-
+import { ToastContainer } from 'react-toastify';
 const App = () => {
   return (
     <div>
+      <ToastContainer />
       <Navbar />
       <hr />
       <div className="app-content">

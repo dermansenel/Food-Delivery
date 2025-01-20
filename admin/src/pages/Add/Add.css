@@ -1,0 +1,42 @@
+.add {
+    width: 80%; /* Genişliği artırdık */
+    margin-left: max(5vw, 25px);
+    margin-top: 50px;
+    color: #6d6d6d;
+    font-size: 18px; /* Yazı tipi boyutunu büyüttük */
+}
+
+.add form {
+    gap: 30px; /* Aralığı artırdık */
+}
+
+.add-img-upload img {
+    width: 150px; /* Görsel genişliğini afrtırdık */
+}
+
+.add-product-name, .add-product-description {
+    width: max(50%, 350px); /* Genişliği artırdık */
+}
+
+.add-product-name input, .add-product-description textarea {
+    padding: 15px; /* Padding'i artırdık */
+}
+
+.add-category-price {
+    display: flex;
+    gap: 40px; /* Aralığı artırdık */
+}
+
+.add-category-price select, .add-category-price input {
+    max-width: 150px; /* Genişliği artırdık */
+    padding: 15px; /* Padding'i artırdık */
+}
+
+.add-btn {
+    max-width: 150px; /* Genişliği artırdık */
+    border: none;
+    padding: 15px; /* Padding'i artırdık */
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
