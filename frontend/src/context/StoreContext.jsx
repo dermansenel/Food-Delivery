@@ -1,6 +1,6 @@
 import { createContext, useState, useMemo, useEffect } from "react";
 import PropTypes from "prop-types";
-import { food_list } from "../assets/assets";
+import axios from "axios";
 
 export const StoreContext = createContext(null);
 
@@ -8,6 +8,7 @@ const StoreContextProvider = ({ children }) => {
     const [cartItems, setCartItems] = useState({});
     const url = "http://localhost:4000";
     const [token, setToken] = useState("");
+    const [food_list, setFoodList] = useState([]);
 
     const addToCart = (itemId) => {
         setCartItems((prev) => ({
@@ -38,12 +39,26 @@ const StoreContextProvider = ({ children }) => {
         }
         return totalAmount;
     };
-    useEffect(() => {
-        const token = localStorage.getItem("token");
-        if (localStorage.getItem("token")) {
-            setToken(localStorage.getItem("token"));
+
+    const fetchFoodList = async () => {
+        try {
+            const response = await axios.get(url + "/api/food/list");
+            setFoodList(response.data.data);
+        } catch (error) {
+            console.error("Error fetching food list:", error);
         }
-    }, []);
+    };
+
+    useEffect(() => {
+        async function loadData() {
+            await fetchFoodList();
+            const storedToken = localStorage.getItem("token");
+            if (storedToken) {
+                setToken(storedToken);
+            }
+        }
+        loadData();
+    }, [url]);
 
     const contextValue = useMemo(() => ({
         food_list,
@@ -55,7 +70,7 @@ const StoreContextProvider = ({ children }) => {
         url,
         token,
         setToken
-    }), [cartItems, token]);
+    }), [cartItems, token, food_list]);
 
     return (
         <StoreContext.Provider value={contextValue}>
