@@ -7,7 +7,7 @@ export const Header = () => {
         <div className="header-contents">
             <h2>Order Your Food Imediatly!</h2>
             <p>Choose your favorite Food and we will send you Imediatly! We are great with this job! Derman Şenel Gökçe</p>
-            <button>View Menu</button>
+            <button>Cem</button>
             
         </div>
     </div>
